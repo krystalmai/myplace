@@ -62,7 +62,7 @@ function PostUpdateForm() {
   };
 
   return (
-    <Card sx={{ p: 3, maxWidth: "1200px" }}>
+    <Card sx={{ p: 3, width: '80vw', maxWidth: '1200px', mx: 'auto' }}>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={2}>
           <TextField
