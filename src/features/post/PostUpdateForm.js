@@ -10,18 +10,14 @@ import { useDispatch } from "react-redux";
 import { editPost } from "../post/postSlice";
 import { useNavigate, useParams } from "react-router-dom";
 
-
 const yupSchema = Yup.object().shape({
   content: Yup.string().required("Content is required"),
 });
 
-
-
 function PostUpdateForm() {
-  
   let { postId } = useParams();
-  
-  let post = useSelector(state => state.post.postsById[postId])
+
+  let post = useSelector((state) => state.post.postsById[postId]);
 
   const defaultValues = {
     content: post.content,
@@ -38,7 +34,7 @@ function PostUpdateForm() {
     setValue,
     formState: { isSubmitting },
   } = methods;
-  
+
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.post);
 
@@ -60,14 +56,13 @@ function PostUpdateForm() {
     [setValue]
   );
 
-
   const onSubmit = (data) => {
-    dispatch(editPost({postId, ...data })).then(() => reset());
+    dispatch(editPost({ postId, ...data })).then(() => reset());
     navigate("/");
-  } 
+  };
 
   return (
-    <Card sx={{ p: 3 }}>
+    <Card sx={{ p: 3, maxWidth: "1200px" }}>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={2}>
           <TextField
@@ -82,7 +77,7 @@ function PostUpdateForm() {
               },
             }}
           />
-            <FUploadImage
+          <FUploadImage
             name="image"
             accept="image/*"
             maxSize={3145728}

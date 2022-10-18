@@ -61,7 +61,7 @@ function PostForm() {
   } 
 
   return (
-    <Card sx={{ p: 3 }}>
+    <Card sx={{ p: 3, maxWidth: '1200px' }}>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={2}>
           <TextField
